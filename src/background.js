@@ -1,11 +1,13 @@
 'use strict'
 
+import fs from 'fs';
+import path from 'path'
 import { app, protocol, BrowserWindow } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
-const isDevelopment = process.env.NODE_ENV !== 'production'
-
 import './module'
+
+const isDevelopment = process.env.NODE_ENV !== 'production'
 
 protocol.registerSchemesAsPrivileged([
   { scheme: 'app', privileges: { secure: true, standard: true } }
@@ -43,7 +45,7 @@ app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) createWindow()
 })
 
-app.on('ready', async () => {
+app.on('ready', async (event) => {
   if (isDevelopment && !process.env.IS_TEST) {
     try {
       await installExtension(VUEJS3_DEVTOOLS)

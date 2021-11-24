@@ -184,6 +184,7 @@
         margin-right: 10px;
 
         p {
+          text-transform: uppercase;
           font-weight: 600;
           color: rgba(255, 0, 0, 0.91);
         }
@@ -238,6 +239,16 @@
       transition: .4s all;
       font-family: Gilroy-Medium, sans-serif;
       outline: none;
+
+      &:disabled {
+        opacity: 0.5;
+        user-select: none;
+        cursor: inherit;
+
+        &:hover {
+          background-color: rgb(26, 152, 255);
+        }
+      }
 
       &:hover {
         transition: .3s all;

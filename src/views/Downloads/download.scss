@@ -18,5 +18,15 @@
     }
   }
 
-  &-block {}
+  &-wrapper__files {
+    .files-item {
+      transition: .3s all;
+
+      &:hover {
+        border-radius: 5px;
+        transition: .3s all;
+        background-color: rgba(0, 103, 255, 0.06);
+      }
+    }
+  }
 }

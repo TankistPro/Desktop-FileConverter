@@ -43,7 +43,7 @@
       <p>Пусто</p>
     </div>
     <div class="download-wrapper__convert">
-      <button @click="converting">
+      <button @click="converting" :disabled="!uploadFile.length">
         Конвертировать
       </button>
     </div>
@@ -83,17 +83,21 @@ export default {
       this.uploadFile.splice(index, 1);
     },
     converting () {
+      if (!this.uploadFile.length) return
+
       this.$emit('setLoading', true);
 
       ipcRenderer.send('read-file', [JSON.stringify(this.uploadFile[0]), this.convertTo])
 
-      ipcRenderer.on('read-file-complete', (event, payload) => {
+      ipcRenderer.once('read-file-complete', (event, payload) => {
         if(payload.status === 'success') {
           this.$store.commit('setConvertFileData', payload)
           this.$router.push('/downloads');
         } else {
           console.log('Ошибка при обработке файла', payload)
         }
+
+        this.uploadFile = false
         this.$emit('setLoading', false);
       })
     }
