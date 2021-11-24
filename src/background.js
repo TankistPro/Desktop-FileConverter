@@ -45,7 +45,7 @@ app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) createWindow()
 })
 
-app.on('ready', async (event) => {
+app.on('ready', async () => {
   if (isDevelopment && !process.env.IS_TEST) {
     try {
       await installExtension(VUEJS3_DEVTOOLS)

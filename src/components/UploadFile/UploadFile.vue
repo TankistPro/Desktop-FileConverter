@@ -97,7 +97,7 @@ export default {
           console.log('Ошибка при обработке файла', payload)
         }
 
-        this.uploadFile = false
+        this.uploadFile = []
         this.$emit('setLoading', false);
       })
     }
