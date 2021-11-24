@@ -68,6 +68,16 @@
         margin-top: 10px;
       }
 
+      &__info {
+        max-width: 300px;
+        min-width: 300px;
+
+        p {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
       &:hover {
         box-shadow: 0 0 10px 10px rgba(253, 0, 0, 0);
 
@@ -79,6 +89,86 @@
           &:hover {
             transform: scale(1.1);
             transition: .3s all;
+          }
+        }
+      }
+
+      &__convert {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 60px;
+
+        h6 {
+          font-size: 1.1rem;
+          margin-right: 10px;
+          text-transform: uppercase;
+        }
+
+        .option-block {
+          position: relative;
+
+          &.open {
+            .option-block__list {
+              border-right: 1px solid #000000;
+              border-left: 1px solid #000000;
+              border-bottom: 1px solid #000000;
+            }
+          }
+
+          &__current {
+            font-size: 1rem;
+            color: rgb(0,0, 0);
+            width: 80px;
+            height: 30px;
+            border: 1px solid #000000;
+            text-align: center;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: .3s all;
+            font-family: 'Gilroy-Medium', sans-serif;
+            text-transform: uppercase;
+
+            &:hover {
+              transition: .3s all;
+              background-color: rgba(86, 163, 253, 0.22);
+            }
+          }
+
+          &__list {
+            box-sizing: border-box;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100%;
+            width: 100%;
+            background-color: #ffffff;
+            height: 0;
+            overflow: hidden;
+            transition: .4s all;
+
+            &.open-list {
+              height: 105px;
+              transition: .4s all;
+            }
+
+            .list__item {
+              background-color: #ffffff;
+              text-align: center;
+              font-size: 1rem;
+              font-family: 'Gilroy-Medium', sans-serif;
+              width: 100%;
+              padding: 8px 0;
+              transition: .3s all;
+              text-transform: uppercase;
+
+              &:hover {
+                transition: .3s all;
+                background-color: rgba(118, 255, 227, 0.55);
+              }
+            }
           }
         }
       }
@@ -135,7 +225,7 @@
 
     button {
       border: none;
-      flex: 0.9;
+      width: 100%;
       height: 100%;
       background-color: rgb(26, 152, 255);
       color: #ffffff;
@@ -147,63 +237,11 @@
       cursor: pointer;
       transition: .4s all;
       font-family: Gilroy-Medium, sans-serif;
-      margin-right: 10px;
       outline: none;
-    }
 
-    .conversation-list {
-      flex: 0.1;
-      width: 50px;
-      height: 100%;
-      border-radius: 5px;
-      background-color: #0000;
-      border: 1px solid #000;
-      position: relative;
-
-      &__current {
-        height: 100%;
-        text-transform: uppercase;
-        border-radius: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
+      &:hover {
         transition: .3s all;
-
-        &:hover {
-          transition: .3s all;
-          background-color: rgba(103, 103, 103, 0.07);
-        }
-      }
-
-      &__options {
-        position: absolute;
-        top: -167%;
-        background-color: #ffffff;
-        box-shadow: 2px 0 5px -3px #000000;
-        width: 100%;
-        border-radius: 3px;
-        overflow: hidden;
-        height: 0;
-        transition: .5s all;
-
-        &.list_open {
-          transition: .5s all;
-          height: 90px;
-        }
-
-        p {
-          text-align: center;
-          padding: 4px;
-          font-size: 1.2rem;
-          cursor: pointer;
-          transition: .3s all;
-
-          &:hover {
-            transition: .3s all;
-            background-color: rgba(0, 255, 255, 0.5);
-          }
-        }
+        background-color: rgb(27, 114, 183);
       }
     }
   }
